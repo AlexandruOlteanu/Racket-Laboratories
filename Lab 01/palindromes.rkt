@@ -229,9 +229,33 @@
 
 ;; Sugestii:
 ;; - folosiți take - (take L n) întoarce prefixul de lungime n al listei L
+(define (max a b)
+  (if (> a b)
+    a
+    b 
+  
+  )
+)
+
+(define (make-number-list n)
+    (if (< n 10)
+      (list n)
+      (append (make-number-list (quotient n 10)) (list (modulo n 10)))
+    )
+)
 
 (define (longest-palindrome n)
-   'your-code-here)
+   (if (< (list->num (list n)) 10)
+      (list->num (list n))
+  (if (equal? (palindrome? (make-number-list n)) #t)
+      (list->num (list n))
+      (max (longest-palindrome (list->num (take (make-number-list n) (- (length (make-number-list n)) 1)))) 
+               (longest-palindrome (list->num (cdr (make-number-list n)))))
+   )
+  )
+  
+  
+)
 
 (check-exp-part 'a 1/6 (longest-palindrome 121) 121)
 (check-in-part  'b 1/6 (longest-palindrome 51) '(1 5))
