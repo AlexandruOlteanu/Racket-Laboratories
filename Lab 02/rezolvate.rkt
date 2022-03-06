@@ -1,7 +1,7 @@
 #lang racket
 
 ;; DrRacket pune la dispoziție o funcție de tracing.
-(require (lib "trace.ss"))
+; (require (lib "trace.ss"))
 
 ;; Exercițiul 1 - folosirea funcției trace pentru a înțelege mai bine desfășurarea recursivității
 
