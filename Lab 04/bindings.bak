@@ -48,10 +48,7 @@
 ;;             Nu puteți folosi `exp`/`expt`.
 ;; compute-square-area:: funcție -> real
 (define (compute-square-area get-length)
-  (let ((L (get-length)))
-       (* L L)
-    )
-)
+  'your-code-here)
 
 (check% 'a 1/4 (compute-square-area (lambda () (count-call 1))) is 1 (check-calls 1))(reset)
 (check% 'b 1/4 (compute-square-area (lambda () (count-call 3932))) is 15460624 (check-calls 1))(reset)
@@ -75,11 +72,7 @@
 ;; Restricții: Fiecare funcție primită drept argument trebuie aplicată o singură dată.
 ;; compute-length:: funcție x funcție x funcție -> real
 (define (compute-length get-line-segment get-start-point get-end-point)
-   (let* ((segment (get-line-segment)) (start (get-start-point segment)) (finish (get-end-point segment)) (x1 (car start)) (x2 (car finish)) (y1 (cdr start)) (y2 (cdr finish)))
-        (sqrt (+ (sqr (- x1 x2)) (sqr (- y1 y2))))
-
-   )
- )
+  'your-code-here)
 
 (let ([fn-binding (lambda (x) (compute-length (lambda () (count-call x)) (lambda (s) (count-call (car s))) (lambda (s) (count-call (cdr s)))))])
   (check% 'a 1/4 (fn-binding (cons '(9 . 12) '(12 . 16))) is 5 (check-calls 3))(reset)
@@ -96,8 +89,7 @@
 ;; asistentului pentru a vă puncta acest exercițiu.
 ;; distance:: pereche x pereche -> real
 (define (distance x y)
-  (compute-length (λ () (cons x y)) car cdr) 
-)
+  'your-code-here)
 
 (check (distance '(9 . 12)  '(12 . 16)) is 5)
 
@@ -110,15 +102,7 @@
 ;; Hint: Folosiți-vă de funcția distance.
 ;; compute-perimeter:: listă de perechi -> număr
 (define (compute-perimeter points)
-  (let ((start (car points)))
-    (let iter ((list points) (perimetru 0))
-         (if (= (length list) 1)
-            (+ perimetru (distance start (car list)))
-            (iter (cdr list) (+ perimetru (distance (car list) (cadr list))))
-          )
-      )
-    )
- )
+  'your-code-here)
 
 (check% 'a 1/4 (compute-perimeter (list '(1 . 0) '(0 . 0) '(0 . 1) '(1 . 1))) is 4)
 (check% 'b 1/4 (compute-perimeter (list '(2 . 0) '(0 . 0) '(0 . 2) '(2 . 2))) is 8)
@@ -141,24 +125,7 @@
 ;; Restricție: Nu definiți funcții în exteriorul player-wins?. Folosiți letrec.
 ;; player-wins?:: întreg -> boolean
 (define (player-wins? candies)
-  (letrec
-      ((first-player-wins? (λ (candies)
-            (cond
-              [(= candies 0) #f]
-              [(<= candies 2) #t]
-              [else (or (not (second-player-wins? (sub1 candies))) (not (second-player-wins? (- candies 2))))]
-             )
-           )
-        )
-        (second-player-wins? (λ (candies)
-             (cond
-               [(<= candies 1) #f]
-               [(<= candies 3) #t]
-               [else (or (not (first-player-wins? (-candies 2))) (not (first-player-wins? (- candies 3))))] 
-             ))
-         )
-     ))
- )
+  'your-code-here)
 
 (check% 'a 1/4 (player-wins? 2) is #t)
 (check% 'b 1/4 (player-wins? 4) is #f)
@@ -246,8 +213,6 @@
 (check% 'b 1/4 (run 9 0 sub1) is (reverse (range 10)))
 (check% 'c 1/4 (run 0 20 (compose add1 add1)) is (filter even? (range 21)))
 (check% 'd 1/4 (run 2 65536 (lambda (x) (* x x))) is '(2 4 16 256 65536))
-
-
 
 
 (exercițiul 10 : 2 puncte BONUS)
